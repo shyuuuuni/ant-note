@@ -5,7 +5,7 @@
 - [IOC 컨테이너](#ioc-컨테이너)
   - [Inversion Of Control](#inversion-of-control)
   - [IOC 컨테이너란?](#ioc-컨테이너란)
-  - [BeanFactory, ApplicationContext](#beanfactory-applicationcontext)
+  - [IOC 컨테이너 구성](#ioc-컨테이너-구성)
     - [BeanFactory](#beanfactory)
     - [ApplicationContext](#applicationcontext)
 
@@ -34,7 +34,7 @@
 
 즉, IOC 컨테이너는 `빈 팩토리(BeanFactory)` 라는 핵심 원리로 IOC 원칙을 따를 수 있도록 제공한다. (팩토리 메소드와는 다르니 혼동하지 말자.)
 
-## BeanFactory, ApplicationContext
+## IOC 컨테이너 구성
 
 ### BeanFactory
 
