@@ -63,3 +63,5 @@ extends EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory, Messag
 이 외에도 여러가지 구현체를 통해 스프링 컨테이너를 구성할 수 있다.
 
 위와 같이 여러가지 설정 정보를 통해 사용할 수 있는 이유는 스프링 컨테이너가 `Config.class` 또는 `config.xml`과 같은 특정 파일을 바라보지 않고 `BeanDefinition` 이라는 빈 메타 정보를 읽어오기 때문에 가능하다. (자세한 내용은 따로 포스팅 할 예정이다.)
+
+그리고 이와 같은 `ApplicationContext` 구현체를 스프링 컨테이너라고 부른다.
