@@ -28,7 +28,7 @@ extends EnvironmentCapable, ListableBeanFactory, HierarchicalBeanFactory, Messag
 
 스프링 컨테이너의 최상위 인터페이스로, 스프링 설정 파일에 따라 스프링 빈 객체를 생성 및 관리하는 기능을 제공한다.
 
-빅 팩토리의 특징으로는 기본적으로 지연 로딩(`Lazy-Loading`) 특징을 가진다는 점이다.
+빈 팩토리(Bean Factory)의 특징으로는 기본적으로 지연 로딩(`Lazy-Loading`) 특징을 가진다는 점이다.
 
 지연 로딩이란 스프링 빈 객체가 필요한 지점에 와서 로딩하는 것을 의미한다.
 
