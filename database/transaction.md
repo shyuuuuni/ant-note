@@ -3,10 +3,10 @@
 - [트랜잭션이란?](#트랜잭션이란)
   - [트랜잭션의 정의](#트랜잭션의-정의)
   - [트랜잭션의 특징](#트랜잭션의-특징)
-    - [Atomicity, 원자성](#atomicity-원자성)
-    - [Constency, 일관성](#constency-일관성)
-    - [Isolation, 격리성](#isolation-격리성)
-    - [Durability, 영속성](#durability-영속성)
+    - [Atomicity (원자성)](#atomicity-원자성)
+    - [Constency (일관성)](#constency-일관성)
+    - [Isolation (격리성)](#isolation-격리성)
+    - [Durability (영속성)](#durability-영속성)
   - [트랜잭션 격리 수준 (Transaction-isolation-level)](#트랜잭션-격리-수준-transaction-isolation-level)
     - [READ UNCOMMITTED (Level 0)](#read-uncommitted-level-0)
     - [READ COMMITTED (Level 1)](#read-committed-level-1)
@@ -35,23 +35,23 @@
 
 이러한 트랜잭션의 특징을 만족하기 위한 트랜잭션의 4가지 특성을 **ACID** 라고 한다.
 
-### Atomicity, 원자성
+### Atomicity (원자성)
 
 - 트랜잭션의 작업은 부분적으로 실행되거나 중간에 중단되지 않는다.
 - 트랜잭션은 가장 작은 작업 수행의 단위이므로 `"All or Nothing"`의 특성을 가진다.
 
-### Constency, 일관성
+### Constency (일관성)
 
 - 트랜잭션이 성공적으로 작업을 마치면 데이터베이스의 상태는 일관적으로 유지된다.
 - 시스템이 가지고 있는 요소는 트랜잭션 전 후로 변하지 않는다.
   (`price`라는 컬럼의 타입이 `integer`에서 트랜잭션 이후 `string` 등으로 변하지 않는 것을 의미한다.)
 
-### Isolation, 격리성
+### Isolation (격리성)
 
 - 트랜잭션 처리 중 다른 트랜잭션이 중간에 개입할 수 없다.
 - 트랜잭션이 수행중이라면 다른 트랜잭션에서 수행 결과를 참조할 수 없다.
 
-### Durability, 영속성
+### Durability (영속성)
 
 - 트랜잭션이 작업을 성공적으로 마치면, 그 결과는 데이터베이스에 계속 반영된다.
 - 즉 커밋된 정보는 데이터베이스에 저장된다는 것을 의미한다.
@@ -64,10 +64,10 @@
 
 다음과 같은 총 4가지 트랜잭션 격리 수준이 있다. (위에서부터 느슨한 수준으로, 아래로 갈 수록 엄격한 수준을 가진다.)
 
-- READ UNCOMMITTED
-- READ COMMITTED
-- REPEATABLE READ
-- SERIALIZABLE
+- `READ UNCOMMITTED`
+- `READ COMMITTED`
+- `REPEATABLE READ`
+- `SERIALIZABLE`
 
 하나씩 살펴보자.
 
@@ -92,7 +92,7 @@
 
 ### READ COMMITTED (Level 1)
 
-대부분의 관계형 데이터베이스에서 사용하는 격리 수준으로, 다른 트랜잭션은 커밋 된 데이터만 읽어올 수 있도록 제한한다.
+대부분의 관계형 데이터베이스(Oracle 등)에서 사용하는 격리 수준으로, 다른 트랜잭션은 커밋 된 데이터만 읽어올 수 있도록 제한한다.
 
 ![read-committed](img/transaction-read-committed.jpeg)
 
@@ -111,7 +111,7 @@
 
 ### REPEATABLE READ (Level 2)
 
-MySQL의 InnoDB 엔진의 기본 격리 수준으로, 트랜잭션이 시작 될 때 마다 트랜잭션 번호를 부여하고, 그 트랜잭션 번호보다 낮은 트랜잭션 번호에서 변경된 것만 읽도록 하는 격리 수준이다.
+`MySQL`의 `InnoDB` 엔진의 기본 격리 수준으로, 트랜잭션이 시작 될 때 마다 트랜잭션 번호를 부여하고, 그 트랜잭션 번호보다 낮은 트랜잭션 번호에서 변경된 것만 읽도록 하는 격리 수준이다.
 
 ![repeatable](img/transaction-repeatable-read.jpeg)
 
