@@ -1,6 +1,6 @@
 # Git Commit Convention
 
-> Git 의 대표적인 장점 중 하나가 다른 사람과 협업을 할 수 있도록 제공하는 기능이다. 협업을 더 잘 하기 위해서 좋은 Commit Convention 을 따를 수 있도록 *Udacity Git Commit Message Style Guide* 를 소개한다.
+> Git 의 대표적인 장점 중 하나가 다른 사람과 협업을 할 수 있도록 제공하는 기능이다. 협업을 더 잘 하기 위해서 좋은 Commit Convention 을 따를 수 있도록 _Udacity Git Commit Message Style Guide_ 를 소개한다.
 
 ## Udacity Git Commit Message Style Guide
 
@@ -81,7 +81,7 @@ Issue Tracker ID 등이 필요할 경우에 작성한다.
 #   chore   : 기타 설정 변경 (빌드 작업 업데이트, package manager 수정 등)
 # --- git commit convention ---
 #   제목은 최대 50글자로, 첫 글자를 대문자와 명령문으로 작성한다.
-#   제목 줄의 끝은 마침표를 사용하지 않는다. 
+#   제목 줄의 끝은 마침표를 사용하지 않는다.
 #   각 줄의 사이는 빈 공백으로 분리한다.
 #   여러줄의 메시지 작성 시 '-' 문자로 구분한다.
 # ---
@@ -93,6 +93,26 @@ Issue Tracker ID 등이 필요할 경우에 작성한다.
 git config --global commit.template [.gitmessage.txt 위치]
 ```
 
-이후 `git commit` 명령어를 사용하면 위에서 커밋 시 위의 메세지가 함께 출력된다. '#' 문자는 무시되므로 편하게 커밋할 수 있다.
+### 예시
 
-협업 뿐만 아니라 좋은 코드를 위해서라도 깃의 커밋 컨벤션을 지키는 것은 중요하다. 이제부터라도 커밋 컨벤션을 신경써서 작성하도록 하자.
+예를 들어 위에서 제공하는 커밋 템플릿을 `.gitmessage.txt`로 저장한 뒤 `~/.gitmessage.txt`로 저장한다.
+
+이후 아래 커맨드를 통해 커밋 설정을 변경한다.
+
+```bash
+git config --global commit.template ~/.gitmessage.txt
+```
+
+이후 `git commit` 명령어를 사용하면 위에서 커밋 시 위의 메세지가 함께 출력된다.
+
+'#' 문자는 무시되므로 편하게 커밋할 수 있다.
+
+### 결론
+
+협업 뿐만 아니라 좋은 코드를 위해서라도 깃의 커밋 컨벤션을 지키는 것은 중요하다.
+
+이제부터라도 커밋 컨벤션을 신경써서 작성하도록 하자.
+
+## 래퍼런스
+
+[Udacity Git Commit Message Style Guide](https://udacity.github.io/git-styleguide/)
