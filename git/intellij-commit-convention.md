@@ -2,6 +2,10 @@
 
 > 인텔리제이 IDE 에서 커밋 메세지 입력 시 커밋 컨벤션을 적용하는 방법을 알아보자.
 
+- [IntelliJ Commit Convention](#intellij-commit-convention)
+  - [플러그인 설치](#플러그인-설치)
+  - [커밋 작성](#커밋-작성)
+
 커밋 컨벤션에 관한 자세한 내용은 [commit-convention](commit-convention.md) 포스트를 참고하면 된다.
 
 - [IntelliJ Commit Convention](#intellij-commit-convention)

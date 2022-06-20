@@ -2,6 +2,18 @@
 
 > Git 의 대표적인 장점 중 하나가 다른 사람과 협업을 할 수 있도록 제공하는 기능이다. 협업을 더 잘 하기 위해서 좋은 Commit Convention 을 따를 수 있도록 _Udacity Git Commit Message Style Guide_ 를 소개한다.
 
+- [Git Commit Convention](#git-commit-convention)
+  - [Udacity Git Commit Message Style Guide](#udacity-git-commit-message-style-guide)
+  - [Commit Message Structure](#commit-message-structure)
+    - [Type](#type)
+    - [Subject](#subject)
+    - [body](#body)
+    - [footer](#footer)
+  - [Git 에 컨벤션 적용](#git-에-컨벤션-적용)
+    - [예시](#예시)
+    - [결론](#결론)
+  - [래퍼런스](#래퍼런스)
+
 ## Udacity Git Commit Message Style Guide
 
 [Udacity](https://www.udacity.com) 는 온라인 학습을 제공하는 사이트로, Computer Science 분야의 과목을 집중적으로 다루는 사이트이다.
