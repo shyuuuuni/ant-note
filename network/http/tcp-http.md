@@ -3,7 +3,7 @@
 > TCP 프로토콜에서 사용해온 HTTP/0.9, HTTP/1.X, HTTP/2.0 버전의 역사를 알아보자.
 
 - [TCP HTTP 역사](#tcp-http-역사)
-  - [1. WWW (World Wide Web)](#1-www-world-wide-web)
+  - [WWW (World Wide Web)](#www-world-wide-web)
   - [HTTP/0.9](#http09)
     - [예시](#예시)
   - [HTTP/1.0](#http10)
@@ -16,7 +16,7 @@
   - [HTTP/3.0](#http30)
   - [래퍼런스](#래퍼런스)
 
-## 1. WWW (World Wide Web)
+## WWW (World Wide Web)
 
 1989년 `Tim Berners-Lee`는 인터넷 상에서의 하이퍼텍스트 시스템을 제안한다.
 
