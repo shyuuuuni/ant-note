@@ -90,7 +90,8 @@ Content-Type: text/gif
 
 - `커넥션 재사용`: `Persistent Connection` 이라고 불리는 기능으로, 지정된 시간 내에 재요청이 들어오면 기존 커넥션을 이용해 통신한다.
 - `파이프라이닝`: 첫번째 요청에 대한 응답이 완전히 전송되기 이전에 두번째 요청 전송을 가능하게 한다.
-  ![img](img/tcp-http-pipelining.png)
+  ![img](img/tcp-http-pipelining.png) \*출처: https://en.wikipedia.org/wiki/HTTP_pipelining
+
 - `Chunked Message 지원`: 큰 메세지를 작은 단위로 잘라서 전송할 수 있다.
 - 추가적인 캐시 제어 메커니즘이 도입된다.
 - 클라이언트와 서버로 하여금 교환하려는 가장 적합한 컨텐츠에 타입을 결정할 수 있도록 한다.
