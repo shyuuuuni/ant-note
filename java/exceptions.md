@@ -65,7 +65,7 @@ Runtime 이라는 말에서 나오듯이 `RuntimeException` 클래스는 JVM이 
 
 `RuntimeException` 클래스와 그 하위 클래스를 제외한 모든 `Exception` 들을 **Checked Exception** 이라고 부른다.
 
-이러한 예외들의 특징은 **Uncheckd Exception**과 정 반대로 다음과 같은 특징을 가지고 있다.
+이러한 예외들의 특징은 **Unchecked Exception**과 정 반대로 다음과 같은 특징을 가지고 있다.
 
 - 컴파일 단계에서 검사할 수 있다.
 - 예외 처리를 꼭 해야한다.
