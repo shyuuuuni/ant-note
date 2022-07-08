@@ -34,6 +34,10 @@
     - [replace()](#replace)
     - [search()](#search)
     - [split()](#split)
+  - [Object 오브젝트](#object-오브젝트)
+    - [ES3기준 프로퍼티 리스트](#es3기준-프로퍼티-리스트)
+    - [Object()](#object)
+  - [래퍼런스](#래퍼런스)
 
 ## 빌트인(Built-in) 오브젝트란?
 
@@ -552,3 +556,44 @@ console.log(value.localeCompare("C")); // -1
 - 분리 대상을 분리자(정규 표현식, 문자열)로 분리하여 배열로 반환한다.
 - 분리자는 배열에 포함되지 않는다.
 - 만약 분리자가 없다면 배열에 원본 문자열을 담아서 반환한다.
+
+## Object 오브젝트
+
+파라미터 데이터 타입을 가지는 오브젝트 객체를 빌트인 Object 라고 한다.
+
+- 모든 빌트인 오브젝트의 `__proto__`에 `Object.prototype`의 6개 메소드가 설정된다.
+
+### ES3기준 프로퍼티 리스트
+
+- new Object(): 파라미터 데이터 타입의 인스턴스를 생성한다.
+- Object(): Object 인스턴스를 생성한다.
+
+**프로토타입(Object.prototype)**
+
+- `constructor`: 생성자
+- `valueOf()`: 원시 값을 반환한다.
+- `hasOwnProperty()`: 프로퍼티 소유 여부를 반환한다.
+- `propertyIsEnumerable()`: 프로퍼티 열거 가능 여부를 반환한다.
+- `isPrototypeOf()`: 프로토타입의 존재 여부를 반환한다.
+- `toString()`: 문자열로 변환하여 반환한다.
+- `toLocaleString()`: 지역화된 문자열로 반환한다.
+
+### Object()
+
+- Object 인스턴스를 생성한다.
+- `{name: value}` 형태의 파라미터를 입력받는다.
+- 오브젝트 리터럴: `var obj = {};` 와 같은 방법으로도 인스턴스를 생성할 수 있다.
+
+**예시 코드**
+
+```javascript
+var obj = Object({ name: "shyuuuuni" });
+console.log(obj); // {name: 'shyuuuuni'}
+
+var emptyObj = Object();
+console.log(emptyObj); // {}
+```
+
+## 래퍼런스
+
+https://www.inflearn.com/course/자바스크립트-비기너/
