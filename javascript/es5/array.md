@@ -10,6 +10,13 @@
     - [isArray()](#isarray)
     - [indexOf()](#indexof)
     - [lastIndexOf()](#lastindexof)
+    - [forEach()](#foreach)
+    - [every()](#every)
+    - [some()](#some)
+    - [filter()](#filter)
+    - [map()](#map)
+    - [reduce()](#reduce)
+    - [reduceRight()](#reduceright)
   - [래퍼런스](#래퍼런스)
 
 ## Array Object
@@ -145,6 +152,134 @@ console.log(value.indexOf("1")); // -1
 var value = [1, 2, 3, 2, 1];
 console.log(value.lastIndexOf(1)); // 4
 ```
+
+### forEach()
+
+- 배열의 원소들을 읽으면서 콜백 함수를 실행한다.
+- 콜백 함수의 파라미터로 `값/인덱스/배열 전체`를 제공한다.
+- `break/continue`는 사용불가, `throw`는 사용가능
+- `this`로 오브젝트를 참조할 수 있다.
+
+**예시 코드**
+
+```javascript
+var list = ["A", "B", "C"];
+list.forEach(function (elem, index, all) {
+  console.log(elem, index, all);
+});
+// 실행 결과
+// A 0 ['A', 'B', 'C']
+// B 1 ['A', 'B', 'C']
+// C 2 ['A', 'B', 'C']
+```
+
+### every()
+
+- `forEach` 처럼 앞에서부터 접근한다.
+- 원소를 하나씩 읽어가면서 `false`를 반환할 때 까지 콜백 함수를 실행한다. (종료조건)
+- 만약 `false`를 반환하면 이후 원소는 탐색하지 않는다.
+
+**예시 코드**
+
+```javascript
+var value = [10, 20, 30, 40];
+var func = function (el, index, all) {
+  console.log(el);
+  return 20 < el;
+};
+var result = value.every(func);
+console.log(result);
+// 출력 결과
+// 10 false (10에서 false를 반환한다.)
+```
+
+### some()
+
+- 앞에서부터 접근한다.
+- 원소를 하나씩 접근하면서 `true`를 반환할 때 까지 함수를 추출한다. (종료조건)
+- 만약 `true`를 반환하면 이후 원소는 탐색하지 않는다.
+
+**예시 코드**
+
+```javascript
+var value = [10, 20, 30, 40];
+var func = function (el, index, all) {
+  console.log(el);
+  return 20 < el;
+};
+var result = value.some(func);
+console.log(result);
+// 출력 결과
+// 10 20 30 true (30에서 true를 반환한다.)
+```
+
+### filter()
+
+- `forEach` 처럼 앞에서부터 접근한다.
+- 원소를 하나씩 읽어가면서 `true`를 반환하면 그 원소들을 반환한다.
+- 조건에 맞는 원소를 추려낼 때 도움이 된다.
+
+**예시 코드**
+
+- 결과값으로 배열을 반환한다.
+
+```javascript
+var value = [10, 20, 30, 40];
+var func = function (el, index, all) {
+  return 20 < el;
+};
+var result = value.filter(func);
+console.log(result); // [30, 40]
+```
+
+### map()
+
+- `forEach` 처럼 앞에서부터 접근한다.
+- 원소를 하나씩 읽어가면서 콜백 함수가 반환하는 값을 새로운 배열로 반환한다.
+
+```javascript
+var value = [1, 2, 3];
+var add = function (el, index, all) {
+  return el + this.add;
+};
+var point = { add: 10 };
+var result = value.map(add, point); // this = point
+console.log(result); // [11, 12, 13]
+```
+
+### reduce()
+
+- `forEach` 처럼 앞에서부터 접근한다.
+- 배열 끝까지 콜백 함수를 호출한다.
+- 파라미터 작성 여부에 따라 처리가 다르다.
+
+**예시 코드**
+
+- prv 값에 인덱스 0값(1)을 넣는다.
+- cur 값에 인덱스 1값(3)을 넣는다.
+- 이후 func 함수를 콜백하여 반환값 4를 얻는다. (prv)
+- cur 값에 인덱스 2값(5)를 넣는다.
+- func 함수를 콜백핳여 반환값 9를 얻는다. (prv)
+- 반복하여 반환값 16을 얻는다. (result)
+
+```javascript
+var value = [1, 3, 5, 7];
+var func = function (prv, cur, index, all) {
+  console.log(prv, cur);
+  return prv + cur;
+};
+var result = value.reduce(func);
+console.log(result); // 16
+// 출력 결과
+// 1 3
+// 4 5
+// 9 7
+// 16
+```
+
+### reduceRight()
+
+- `reduce`와 처리 방법이 같지만, 배열 끝에서 앞으로 처리한다.
 
 ## 래퍼런스
 
