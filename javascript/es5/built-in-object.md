@@ -37,6 +37,7 @@
   - [Object 오브젝트](#object-오브젝트)
     - [ES3기준 프로퍼티 리스트](#es3기준-프로퍼티-리스트)
     - [Object()](#object)
+  - [Boolean 오브젝트](#boolean-오브젝트)
   - [래퍼런스](#래퍼런스)
 
 ## 빌트인(Built-in) 오브젝트란?
@@ -593,6 +594,14 @@ console.log(obj); // {name: 'shyuuuuni'}
 var emptyObj = Object();
 console.log(emptyObj); // {}
 ```
+
+## Boolean 오브젝트
+
+- Built-in Boolean Object
+- true, false를 처리한다.
+- 값이 있으면 true로 처리한다.
+- undefined, null, NaN, 빈 문자열, 숫자타입 0 은 false로 처리한다.
+- true를 1로, false를 0으로 변환한다.
 
 ## 래퍼런스
 
