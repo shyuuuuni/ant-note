@@ -36,8 +36,20 @@
     - [split()](#split)
   - [Object 오브젝트](#object-오브젝트)
     - [ES3기준 프로퍼티 리스트](#es3기준-프로퍼티-리스트)
+    - [ES5에 추가된 기능](#es5에-추가된-기능)
     - [Object()](#object)
   - [Boolean 오브젝트](#boolean-오브젝트)
+    - [프로퍼티](#프로퍼티)
+    - [new Boolean()](#new-boolean)
+    - [Boolean()](#boolean)
+  - [JSON Object](#json-object)
+    - [stringify()](#stringify)
+    - [parse()](#parse)
+  - [Date 오브젝트](#date-오브젝트)
+    - [시간값 기준](#시간값-기준)
+    - [프로퍼티 리스트](#프로퍼티-리스트)
+  - [Math 오브젝트](#math-오브젝트)
+    - [프로퍼티 리스트](#프로퍼티-리스트-1)
   - [래퍼런스](#래퍼런스)
 
 ## 빌트인(Built-in) 오브젝트란?
@@ -579,6 +591,35 @@ console.log(value.localeCompare("C")); // -1
 - `toString()`: 문자열로 변환하여 반환한다.
 - `toLocaleString()`: 지역화된 문자열로 반환한다.
 
+### ES5에 추가된 기능
+
+- 여러 기능의 함수(메소드X)가 추가되었다.
+- 메소드가 아닌 함수가 추가되어서 다른 오브젝트들에게 추가적인 부담을 주지 않는다.
+
+**함수**
+
+- `defineProperty()`: 프로퍼티 추가 혹은 변경
+- `defineProperties()`: 다수의 프로퍼티 추가 혹은 변경
+- `getPrototypeOf()`: 프로토타입에 연결된 프로퍼티를 반환
+- `getOwnPropertyNames()`: 프로퍼티 이름을 배열로 모두 반환
+- `keys()`: 열거 가능한 프로퍼티 이름들을 반환
+- `getOwnPropertyDescriptor()`: 디스크립터 속성 반환
+- `preventExtensions()`: 프로퍼티 추가(확장)를 금지
+- `isExtensible()`: 프로퍼티 추가 금지 상태인지 반환
+- `seal()`: 프로퍼티 추가,삭제를 금지
+- `isSealeD()`: 프로퍼티 추가,삭제 금지 상태인지 반환
+- `freeze()`: 프로퍼티 추가,삭제,변경 금지
+- `isFrozen()`: 프로퍼티 추가,삭제,변경 금지 상태인지 반환
+
+**프로퍼티 디스크립터**
+
+- `value`: `[[Value]]`, 설정된 값
+- `writable`: `[[Writable]]`, 값 변경 가능 여부
+- `get`: `[[Get]]`, getter, 값 반환 프로퍼티 함수
+- `set`: `[[Set]]`, setter, 값 설정 프로퍼티 함수
+- `enumerable`: `[[Enumerable]]`, 프로퍼티 열거 가능 여부
+- `configurable`: `[[Configurable]]`, 프로퍼티 삭제 가능 여부
+
 ### Object()
 
 - Object 인스턴스를 생성한다.
@@ -602,6 +643,238 @@ console.log(emptyObj); // {}
 - 값이 있으면 true로 처리한다.
 - undefined, null, NaN, 빈 문자열, 숫자타입 0 은 false로 처리한다.
 - true를 1로, false를 0으로 변환한다.
+
+### 프로퍼티
+
+- `new Boolean()`: 인스턴스 생성
+- `Boolean()`: `Boolean` 타입으로 변환
+
+**프로토타입(Boolean.prototype)**
+
+- `constructor`: 생성자
+- `toString()`: `true`/`false` 문자열로 반환
+- `valueOf()`: 원시 값 반환
+
+### new Boolean()
+
+- Boolean 인스턴스를 생성한다.
+- 입력한 파라미터 값을 기준으로 true, false로 변환하여 원시 값으로 설정한다.
+- 값이 있는 문자열이면 true로 설정한다.
+
+**예시 코드**
+
+- `false`가 저장되는 케이스
+- `valueOf()`로 오브젝트의 원시 값을 볼 수 있다.
+
+```javascript
+var value = [undefined, null, NaN, 0, ""];
+for (var i = 0; i < value.length; i++) {
+  var obj = new Boolean(value[i]);
+  console.log(i, obj.valueOf());
+}
+// 출력 결과
+// 0 false
+// 1 false
+// 2 false
+// 3 false
+// 4 false
+```
+
+### Boolean()
+
+- Boolean 값으로 변환한다.
+- 인스턴스가 아닌 `true`, `false`로 변환한다.
+
+**예시 코드**
+
+```javascript
+var value = [12, "1", "0", "false"];
+for (var i = 0; i < value.length; i++) {
+  console.log(i, Boolean(value[i]));
+}
+// 출력 결과
+// 0 true
+// 1 true
+// 2 true
+// 3 true
+```
+
+## JSON Object
+
+- JSON: JavaScript Object Notation
+- 데이터 송수신을 위한 텍스트 타입, json, txt 확장자를 가진다.
+
+### stringify()
+
+- `JSON.stringify()`
+- 파라미터로 변환 대상 자바스크립트 타입을 입력받는다.
+- 두번째 파라미터로 함수/배열을 입력받을 수 있다.
+- 마지막 파라미터로 구분자를 입력받을 수 있다.
+
+**예시 코드**
+
+```javascript
+var value = {
+  book: "책",
+  one: 1,
+};
+var result = JSON.stringify(value);
+console.log(result); // {"book":"책","one":1}
+```
+
+- 아래 예시처럼 파라미터를 추가하여 함수를 적용할 수 있다.
+- 문자열을 value로 가진 프로퍼티는 `undefined`를 리턴한다.
+- `undefined`는 중괄호 내에서 `key-value` 모두 표시되지 않는다.
+
+```javascript
+function replacer(key, value) {
+  if (typeof value === "string") {
+    return undefined;
+  }
+  return value;
+}
+
+var foo = {
+  foundation: "Mozilla",
+  model: "box",
+  week: 45,
+  transport: "car",
+  month: 7,
+};
+var result = JSON.stringify(foo, replacer);
+console.log(result); // {"week":45,"month":7}
+```
+
+**주의 사항**
+
+- `undefined` 사용 시 유의해야 한다.
+- 아래 예시처럼 케이스마다 다른 결과를 가져올 수 있다.
+
+```javascript
+console.log(JSON.stringify(undefined)); // undefined
+console.log(JSON.stringify([undefined])); // [null]
+console.log(JSON.stringify({ value: undefined })); // {}
+```
+
+### parse()
+
+- JSON 타입을 자바스크립트 타입으로 변환한다.
+- 첫번째 파라미터로 변환 대상을, 두번째 파라미터로 파싱 데이터로 실행할 함수를 입력한다.
+
+**예시 코드**
+
+```javascript
+var value = "123"; // JSON
+try {
+  var result = JSON.parse(value);
+} catch (e) {
+  console.log(e, "파싱 에러");
+}
+console.log(result); // 123
+console.log(typeof result); // Number
+```
+
+- 아래처럼 함수를 사용 할 경우 key-value를 파라미터로 하는 함수를 실행한다.
+
+```javascript
+var value = '{"book": "책", "one": 1, "two": 2}';
+var checkNumber = function (key, value) {
+  if (typeof value === "string") {
+    return undefined;
+  }
+  return value;
+};
+var result = JSON.parse(value, checkNumber);
+console.log(result); // {one: 1, two: 2}
+```
+
+## Date 오브젝트
+
+- 시간(년-월-일-시-분-초, 밀리초까지)을 관리할 수 있는 오브젝트
+- 시간값(Time-value) 라고도 한다.
+- UTC 기준 1970년 1월 1일 기준으로 밀리초를 제공한다. (최대 1억일을 지원한다.)
+
+### 시간값 기준
+
+- 월은 0부터 1월부터 시작한다.
+  - 0: 1월, 1: 2월, ..., 11: 12월
+- 일을 1부터 시작한다.
+- 요일은 0부터 일요일부터 시작한다.
+  - 0: 일요일, 1: 월요일, ..., 6: 토요일
+
+**예시 코드**
+
+```javascript
+var obj = new Date(1970, 1, 1, 1, 1, 1, 1);
+console.log(obj.toLocaleString()); // 1970. 2. 1. 오전 1:01:01
+```
+
+### 프로퍼티 리스트
+
+**Date 함수**
+
+- `Date()`: 현재 시각 반환
+- `parse()`: 문자열 값을 밀리초로 변환
+- `UTC()`: UTC 기준 밀리초로 변환
+- `now()`: 현재 시각을 밀리초로 반환
+
+**프로토타입(Date.prototype)**
+
+- `constructor`: 생성자
+- `toString()`: 일자와 시간을 변환하여 문자열로 반환
+- `toUTCString()`: UTC 기준 일자와 시간을 반환
+- `toISOString()`: ISO 8601 확장 형식의 간소 버전으로 일자와 시간 반환
+- `toDateString()`: 연원일+요일을 읽기 쉬운 형태로 반환
+- `toTimeString()`: 시분초+타임존을 읽기 쉬운 형태로 반환
+- `toLocaleDateString()`: 연원일을 지역 언어로 반환
+- `toLocaleTimeString()`: 시분초+오전/오후를 지역 언어로 반환
+- `toJSON()`: JSON 형태의 일자/시간을 반환
+- `vallueOF()`: 원시 값 반환
+- `getTime()`: 시간값 반환
+- `getYear()`: 세기 구분 + 연도 2자리 반환
+- `getFullYear()`: 연도 반환
+- `getDate()`: 일 반환
+- `getMonth()`: 월 반환
+- `getDay()`: 요일 반환
+- `getHours()`: 시 반환
+- `getMinutes()`: 분 반환
+- `getSeconds()`: 초 반환
+- `getMiliseconds()`: 밀리초 반환
+- `getTimezoneOffset()`: UTC 시간차이를 분으로 반환
+- `get + UTC + ...`: UTC기준 연도/일/시/초/ ... 반환
+
+## Math 오브젝트
+
+- 수학 계산용 오브젝트
+- new 연산자로 인스턴스 생성 불가능하다. (Math, JSON, 글로벌 오브젝트)
+- 함수 형태(Math.function())로 사용
+- ES6에서 더 많이 기능이 추가되었다.
+
+### 프로퍼티 리스트
+
+**상수**
+
+- `E`: 자연로그
+- `LN10`: 자연로그 10
+- `LN2`: 자연로그 2
+- `LOG2E`: 밑이 2인 로그 e
+- `LOG10E`: 밑이 10인 로그 e
+- `PI`: 파이값
+- `SQRT1_2`: 0.5의 제곱근
+- `SQRT2`: 2의 제곱근
+
+**함수**
+
+- `abs()`: 절댓값
+- `floor()`: 소수 이하를 버린 정수 반환
+- `ceil()`: 소수 이하를 올린 정수 반환
+- `round()`: 소수 이하를 반올림한 정수 반환
+- `max()`: 최대값
+- `min()`: 최소값
+- `random()`: 0~1 사이의 난수 반환
+- `pow()`: x의 y제곱값 반환
+
+> 추가로 cos(), sin() 및 여러 다른 함수가 있지만 특수한 경우를 제외하고 잘 사용하지 않아서 따로 소개하지 않았다. ES6에서 Math 오브젝트에 더 많은 기능이 추가되어 딥러닝 등에서 많이 사용할 수 있게 되었다.
 
 ## 래퍼런스
 
